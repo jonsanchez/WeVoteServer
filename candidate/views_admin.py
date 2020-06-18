@@ -872,6 +872,7 @@ def candidate_edit_view(request, candidate_id=0, candidate_campaign_we_vote_id="
     google_civic_candidate_name2 = request.GET.get('google_civic_candidate_name2', False)
     google_civic_candidate_name3 = request.GET.get('google_civic_candidate_name3', False)
     candidate_twitter_handle = request.GET.get('candidate_twitter_handle', False)
+    candidate_instagram_handle = request.GET.get('candidate_instagram_handle', False)
     candidate_url = request.GET.get('candidate_url', False)
     candidate_contact_form_url = request.GET.get('candidate_contact_form_url', False)
     facebook_url = request.GET.get('facebook_url', False)
@@ -1008,6 +1009,7 @@ def candidate_edit_view(request, candidate_id=0, candidate_campaign_we_vote_id="
             'google_civic_candidate_name2':     google_civic_candidate_name2,
             'google_civic_candidate_name3':     google_civic_candidate_name3,
             'candidate_twitter_handle':         candidate_twitter_handle,
+            'candidate_instagram_handle':       candidate_instagram_handle,
             'candidate_url':                    candidate_url,
             'candidate_contact_form_url':       candidate_contact_form_url,
             'facebook_url':                     facebook_url,
@@ -1066,6 +1068,7 @@ def candidate_edit_process_view(request):
     candidate_twitter_handle = request.POST.get('candidate_twitter_handle', False)
     if positive_value_exists(candidate_twitter_handle):
         candidate_twitter_handle = extract_twitter_handle_from_text_string(candidate_twitter_handle)
+    candidate_instagram_handle = request.POST.get('candidate_instagram_handle', False)
     candidate_url = request.POST.get('candidate_url', False)
     candidate_contact_form_url = request.POST.get('candidate_contact_form_url', False)
     facebook_url = request.POST.get('facebook_url', False)
@@ -1109,6 +1112,7 @@ def candidate_edit_process_view(request):
                             "&google_civic_candidate_name3=" + str(google_civic_candidate_name3) + \
                             "&contest_office_id=" + str(contest_office_id) + \
                             "&candidate_twitter_handle=" + str(candidate_twitter_handle) + \
+                            "&candidate_instagram_handle=" + str(candidate_instagram_handle) + \
                             "&candidate_url=" + str(candidate_url) + \
                             "&candidate_contact_form_url=" + str(candidate_contact_form_url) + \
                             "&facebook_url=" + str(facebook_url) + \
@@ -1301,6 +1305,8 @@ def candidate_edit_process_view(request):
                 candidate_on_stage.candidate_name = candidate_name
             if candidate_twitter_handle is not False:
                 candidate_on_stage.candidate_twitter_handle = candidate_twitter_handle
+            if candidate_instagram_handle is not False:
+                candidate_on_stage.candidate_instagram_handle = candidate_instagram_handle
             if candidate_url is not False:
                 candidate_on_stage.candidate_url = candidate_url
             if candidate_contact_form_url is not False:
@@ -1405,6 +1411,8 @@ def candidate_edit_process_view(request):
                     candidate_on_stage.google_civic_candidate_name3 = google_civic_candidate_name3
                 if candidate_twitter_handle is not False:
                     candidate_on_stage.candidate_twitter_handle = candidate_twitter_handle
+                if candidate_instagram_handle is not False:
+                    candidate_on_stage.candidate_instagram_handle = candidate_instagram_handle
                 if twitter_url is not False:
                     candidate_on_stage.twitter_url = twitter_url
                 if withdrawn_from_election:

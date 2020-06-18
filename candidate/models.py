@@ -1466,6 +1466,9 @@ class CandidateCampaign(models.Model):
     we_vote_hosted_profile_image_url_tiny = models.TextField(verbose_name='we vote hosted tiny image url',
                                                              blank=True, null=True)
 
+    candidate_instagram_handle = models.CharField(
+        verbose_name='candidate instagram handle', max_length=255, null=True, unique=False)
+
     google_plus_url = models.URLField(verbose_name='google plus url of candidate campaign', blank=True, null=True)
     youtube_url = models.URLField(verbose_name='youtube url of candidate campaign', blank=True, null=True)
     # The email address for the candidate's campaign.
@@ -3169,6 +3172,9 @@ class CandidateCampaignManager(models.Model):
                     values_changed = True
                 if 'candidate_twitter_handle' in update_values:
                     existing_candidate_entry.candidate_twitter_handle = update_values['candidate_twitter_handle']
+                    values_changed = True
+                if 'candidate_instagram_handle' in update_values:
+                    existing_candidate_entry.candidate_instagram_handle = update_values['candidate_instagram_handle']
                     values_changed = True
                 if 'candidate_url' in update_values:
                     existing_candidate_entry.candidate_url = update_values['candidate_url']

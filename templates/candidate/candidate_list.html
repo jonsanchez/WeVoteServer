@@ -336,7 +336,7 @@
                 <th>Office</th>
                 <th>Twitter Handle</th>
                 <th>Google Search Results</th>
-                <th>Website / Facebook / Email</th>
+                <th>Website / Facebook / Email / Instagram</th>
                 <th>Ballotpedia</th>
             </tr>
           </thead>
@@ -494,7 +494,8 @@
                   {% if candidate.candidate_contact_form_url %}<a href="{{ candidate.candidate_contact_form_url }}" target="_blank">{{ candidate.candidate_contact_form_url }}</a><br />{% endif %}
                 </span>
                   {% if candidate.facebook_url %}<a href="{{ candidate.facebook_url }}" target="_blank">{{ candidate.facebook_url }}</a><br />{% endif %}
-                  {% if candidate.candidate_email %}{{ candidate.candidate_email }}{% endif %}
+                  {% if candidate.candidate_email %}{{ candidate.candidate_email }}<br />{% endif %}
+                  {% if candidate.candidate_instagram_handle %}<a href="https://www.instagram.com/{{ candidate.candidate_instagram_handle }}" target="_blank">@{{ candidate.candidate_instagram_handle }}</a>{% endif %}
                 </td>
                 <td>
                   {% if candidate.ballotpedia_candidate_id %}
